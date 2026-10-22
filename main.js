@@ -168,7 +168,13 @@ function find_sign(input_month, input_day) {
 
         } 
 
-    } 
+    }
+}
+
+function list_all_signs() {
+    for (const sign of zodiac_signs) {
+        console.log(`${sign.name}: ${sign.car}`);
+    }
 }
 
 
@@ -192,6 +198,8 @@ function open_help_menu(sign) {
 }
 
 open_help_menu();
+
+list_all_signs();
 
 if (sign) {
     present_card(sign);

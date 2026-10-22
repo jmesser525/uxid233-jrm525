@@ -165,7 +165,7 @@ function find_sign(input_month, input_day) {
             return sign;
         }
     }
-    return null;
+    
 }
 
     

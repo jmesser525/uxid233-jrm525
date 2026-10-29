@@ -157,6 +157,8 @@ const zodiac_signs = [
         "text": "The Bugatti Bolide is a terrifying manifestation of engineering without restraint, a machine born when one of the most prestigious automotive manufacturers in history abandoned everything it had come to represent in pursuit of absolute mechanical supremacy. Gone are the sumptuous leather interiors, the effortless grand touring, the aristocratic refinement, and the extraordinary luxury that made the Bugatti name synonymous with automotive royalty. What remains is something almost incomprehensible: a skeletal, carbon-fiber leviathan forged with a singular, merciless purpose. At its heart resides the legendary 8.0-liter quad-turbocharged W16, a sixteen-cylinder mechanical colossus unleashing 1,578 horsepower into a machine that exists solely to conquer the racetrack. Its impossibly low silhouette, savage aerodynamic architecture, and cavernous air channels resemble the anatomy of some prehistoric predator, a creature whose every surface has been shaped by the relentless demands of speed. Its immense rear wing, aggressive diffusers, and uncompromising chassis transform the very atmosphere into an instrument of domination. There is something profoundly extraordinary about its existence: Bugatti, a manufacturer that spent decades perfecting the marriage of unimaginable performance and unparalleled luxury, finally asking what might happen if it sacrificed one for the absolute pursuit of the other. No concessions to comfort. No pursuit of elegance for elegance's sake. Not even the freedom to roam public roads. The Bolide has surrendered them all, and in doing so, has become something far more extreme than any Chiron or Veyron could ever hope to be. The Bolide is the one who left it all behind. The handcrafted interiors, the grand touring refinement, the obligation to be civilized. What remains is sixteen cylinders, four turbochargers, and the terrifying realization that Bugatti's greatest act of engineering may have required abandoning everything that once made it a Bugatti. It is not an automobile designed to inhabit the world. It is a machine designed to exist at the absolute limits of what the world will allow."
     }
 ];
+const output = document.querySelector('#output');
+const sign_list = document.querySelector('#sign-list');
 // Function that matches user input with the zodiac_signs array and returns the corresponding sign object.//
 function find_sign(input_month, input_day) {
     for (const sign of zodiac_signs) {
@@ -173,12 +175,23 @@ function find_sign(input_month, input_day) {
 // This function will list all the zodiac signs and their corresponding cars in the console.//
 function list_all_signs() {
     for (const sign of zodiac_signs) {
-        console.log(`${sign.name}: ${sign.car}`);
+        const li = document.createElement('li');
+        li.textContent = `${sign.name}: ${sign.car}`;
+        sign_list.appendChild(li);
     }
 }
 // Presents the corresponding card of the chosen sign with the proper data. This function will call other functions to display the image, play the sound, and save the last sign.//
 function present_card(sign) {
     console.log('This function will present the card of the chosen sign with the proper data');
+
+    const car_heading = document.createElement('h2');
+    car_heading.textContent = sign.car;
+    output.appendChild(car_heading);
+
+    const sign_name = document.createElement('p');
+    sign_name.textContent = sign.name;
+    output.appendChild(sign_name);
+
     display_card_image(sign);
     play_car_sound(sign);
     save_last_sign(sign);
@@ -198,7 +211,7 @@ function open_help_menu(sign) {
 open_help_menu();
 list_all_signs();
 
-const sign = find_sign(7, 2);
+const sign = find_sign(1, 2);
 
 if (sign) {
     console.log(`Your sign is ${sign.name}: ${sign.car}`);
